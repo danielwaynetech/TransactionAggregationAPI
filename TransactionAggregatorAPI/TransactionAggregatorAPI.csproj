@@ -14,4 +14,13 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TransactionAggregatorAPI.DataAccess\TransactionAggregatorAPI.DataAccess.csproj" />
+    <ProjectReference Include="..\TransactionAggregatorAPI.Domain\TransactionAggregatorAPI.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
