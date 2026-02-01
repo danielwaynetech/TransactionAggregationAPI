@@ -1,0 +1,649 @@
+################################################################################
+# Transaction Aggregation API - Comprehensive .gitignore for .NET 10 Solution
+# 
+# This file ignores:
+# - Visual Studio generated files and directories
+# - Build outputs and intermediate files
+# - NuGet packages and lock files
+# - IDE-specific settings (VS Code, Rider, ResShaper)
+# - User-specific configurations
+# - Docker and database artifacts
+# - Logs, temporary files, and environment secrets
+# - Test coverage reports
+# - OS-specific files
+################################################################################
+
+################################################################################
+# Build Outputs
+################################################################################
+# Compiled source
+bin/
+obj/
+out/
+.publish/
+
+# Build directories per configuration
+[Dd]ebug/
+[Rr]elease/
+[Xx]64/
+[Xx]86/
+
+# Assembly versions
+*.dll
+*.exe
+*.pdb
+
+################################################################################
+# Visual Studio IDE
+################################################################################
+# Visual Studio cache/options directory
+.vs/
+
+# Visual Studio user-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.sln.switches
+
+# Visual Studio user options
+.vscode/settings.json
+.vscode/launch.json
+.vscode/extensions.json
+
+# Resharper files
+.idea/
+*.sln.iml
+_ReSharper.*
+*.resharper
+*.resharpersettings
+
+# Visual Assist
+*.vcxproj.user
+
+################################################################################
+# NuGet
+################################################################################
+# NuGet Package Files
+*.nupkg
+*.snupkg
+.nuget/
+
+# NuGet Lock files
+packages.lock.json
+packages/
+
+# NuGet directory
+.nuget/
+NugetPackages/
+
+# Package restore
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+################################################################################
+# Test Results and Coverage
+################################################################################
+# MSTest
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+[Tt]est[Rr]esults/
+
+# NUnit
+*.VisualState.xml
+TestResult.xml
+nunit-*.xml
+
+# XUnit
+*.trx
+
+# Code coverage
+OpenCover/
+*.coverage
+*.coveragexml
+coverage.json
+coverage/
+**/OpenCover/
+
+# Test Runner
+TestExplorer.log
+
+# Local test run artifacts
+bin/Debug/
+obj/Debug/
+
+################################################################################
+# Entity Framework Migrations (temporary build artifacts only)
+################################################################################
+# Keep migration files in version control but ignore temporary build artifacts
+# Only ignore if migration contains generated code outside Migrations folder
+*.migration.cs
+
+################################################################################
+# Docker
+################################################################################
+# Docker volumes and data
+postgres_data/
+mysql_data/
+*.container.log
+
+# Docker build cache
+.docker/
+docker-compose.override.yml
+
+# Docker environment files (if storing locally)
+.dockerenv
+
+################################################################################
+# Environment and Configuration Files
+################################################################################
+# Environment variables (NEVER commit these!)
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Application settings overrides (local/personal)
+appsettings.local.json
+appsettings.Local.json
+
+# User-specific settings
+appsettings.user.json
+
+# Secrets (use User Secrets in development)
+secrets.json
+user_secrets.json
+
+# Database connection strings and credentials
+**/appsettings.*.local.json
+**/appsettings.Development.local.json
+**/appsettings.Production.local.json
+
+################################################################################
+# Logging
+################################################################################
+# Log files
+*.log
+*.log.*
+logs/
+log/
+
+# Application-specific logs
+Logs/
+*.log
+debug.log
+error.log
+
+# NLog
+NLog.config.user
+
+################################################################################
+# Temporary Files
+################################################################################
+# Windows temporary files
+Thumbs.db
+Desktop.ini
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# macOS temporary files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Linux temporary files
+*.swp
+*.swo
+*~
+
+# Editor temporary files
+*.~
+*.bak
+*.backup
+*.swp
+*.orig
+
+################################################################################
+# IDE and Editor Specific
+################################################################################
+# Visual Studio Code
+.vscode/
+*.code-workspace
+jsconfig.json
+tsconfig.json
+
+# JetBrains Rider
+.idea/
+.idea/**
+*.sln.iml
+*.iml
+.ijwb/
+cmake-build-*/
+
+# SublimeText
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.swp
+*.swo
+Session.vim
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# Atom
+.atom/
+.atom-build.json
+
+# VS extensions
+.vsfx
+*.vsix
+
+################################################################################
+# Build Results Per-Configuration
+################################################################################
+[Dd]ebugPS/
+[Rr]eleasePS/
+
+# Windows Performance Analyzer
+*.etl
+*.etlx
+
+################################################################################
+# Database Files
+################################################################################
+# SQLite
+*.db
+*.db-shm
+*.db-wal
+
+# SQL Server
+*.mdf
+*.ldf
+*.ndf
+
+# PostgreSQL dumps
+*.sql
+!scripts/*.sql  # Keep scripts but ignore local exports
+
+# Database backups
+*.backup
+*.bak
+
+################################################################################
+# Publishing
+################################################################################
+# Publish directory
+publish/
+Publish/
+PublishProfiles/
+
+# Web Publish
+*.azurePubxml
+*.pubxml
+*.publishproj
+
+# FTP
+*.ftp.xml
+
+# OneClick deployments
+publish/
+
+# Generated deployment files
+deployment-manifest.xml
+
+################################################################################
+# Nuget Packages Folder
+################################################################################
+packages/*
+!packages/repositories.config
+
+################################################################################
+# MakeLogs
+################################################################################
+MakeLogs/
+
+################################################################################
+# Build Artifacts
+################################################################################
+artifacts/
+publishTemp/
+[Bb]in/
+[Oo]bj/
+
+################################################################################
+# Benchmark Results
+################################################################################
+BenchmarkDotNet.Artifacts/
+*.json  # Benchmark JSON results (excluding essential config files)
+
+################################################################################
+# MSBuild
+################################################################################
+*.proj
+*.props
+*.targets
+*.build
+*.vbproj.user
+
+# NCB files
+*.ncb
+*.sdf
+*.opensdf
+
+################################################################################
+# Rider/WebStorm
+################################################################################
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# LSP (Language Server Protocol) files
+.lsp/
+
+################################################################################
+# Visual Studio Native C++
+################################################################################
+*.sln.user
+*.cpp.user
+
+################################################################################
+# OpenCppCoverage
+################################################################################
+OpenCppCoverage/
+
+################################################################################
+# Analysis
+################################################################################
+# FxCop analysis reports
+FxCopReport.html
+
+# StyleCop reports
+StyleCopReport.html
+
+# Resharper/JetBrains analysis
+_ReSharper*/
+*.DotSettings.user
+
+# Code Analysis
+*AnalysisResult.sarif
+
+################################################################################
+# Azure Artifacts
+################################################################################
+*.azurePubxml
+PublishScripts/
+.azure/
+.azurefunctions/
+
+################################################################################
+# App Package
+################################################################################
+*.appx
+*.appxbundle
+*.appxupload
+*.package.StoreAssociation.xml
+
+################################################################################
+# Windows Store app package directories
+################################################################################
+AppPackages/
+BundleArtifacts/
+
+################################################################################
+# Others
+################################################################################
+# Click-Once directory
+publish/
+
+# Publish Web Output
+*.Publish.xml
+*.pubxml
+*.publishproj
+
+# Microsoft Azure Web App publish settings when a database gets created
+PublishScripts/
+
+# NuGet Standalone packages
+*.nupkg.metadata
+*.nupkg.sha512
+
+# MSBuild Binary and Structured Log
+*.binlog
+
+# NVidia Nsight GPU debugger configuration file
+*.nvuser
+
+# MFractors (Xamarin productivity tool) working directory
+.mfractor/
+
+# Local History for Visual Studio
+.localhistory/
+
+# BeatPulse healthcheck temp database
+healthchecksdb
+
+# Ionide (cross platform F# VS Code tools) working directory
+.ionide/
+
+# Fody - auto-generated proxy
+FodyWeavers.xsd
+
+# VS Toolbox cache
+.toolbox/
+
+# ReSharper is a .NET coding add-in
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# JetBrains Toolbox
+.toolbox/
+
+# Tye
+.tye/
+
+# Backup & report files from converting an old project file
+# to a newer Visual Studio version. Backup files are not needed,
+# because we have git ;-)
+_UpgradeReport_Files/
+Backup*/
+UpgradeLog*.XML
+UpgradeLog*.htm
+ServiceFabricBackup/
+*.rptproj.bak
+
+# SQL Server files
+*.mdf
+*.ldf
+*.ndf
+
+# Fusion Engine Cache
+_Pvt_Extensions/
+
+# VS code directory
+.vscode/
+
+# Uncomment if you have tasks that create the project's static files in wwwroot
+#wwwroot/
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# Pipenv
+Pipfile.lock
+
+# PEP 582
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# dotenv
+.env
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+################################################################################
+# Project-Specific Files
+################################################################################
+# Financial Aggregator specific ignores
+
+# Local database files
+*.db3
+financial_aggregator.db
+
+# Migration backups
+Migrations/Backups/
+
+# Seed data (if local and not committed)
+SeedData.local.json
+
+# API documentation output
+api-docs/
+swagger-ui-dist/
+
+# Performance profiling
+*.diagsession
+*.vspx
+*.psess
+
+# Custom tools output
+tools/output/
+tools/temp/
+
+# Local feature branches
+local-features/
+
+# Temporary scripts
+*.sh.bak
+*.ps1.bak
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+################################################################################
+# Secrets and Private Keys
+################################################################################
+# Never commit secrets, keys, or credentials
+*.pem
+*.key
+*.pfx
+*.p12
+*.jks
+client_secret.json
+private.key
+id_rsa
+id_rsa.pub
+authorized_keys
+
+# SSH keys
+.ssh/
+~/.ssh/
+
+# GCP Service Account
+service-account-key.json
+
+# AWS Credentials
+.aws/credentials
+.aws/config
+
+################################################################################
+# Backup and Restore
+################################################################################
+# Database backups
+*.backup
+*.bak
+*.sql.gz
+*.tar.gz
+
+# System backups
+*.backup.zip
+backup/
+Backups/
+
+################################################################################
+# Certificate Files
+################################################################################
+# Development certificates (local only)
+*.cer
+*.crt
+*.pem
+*.pfx
+!dev-certificates/  # If you want to commit development cert structure
+
+################################################################################
+# Runtime Files
+################################################################################
+# Application data
+data/
+app_data/
+userData/
+
+# Temporary runtime directories
+temp/
+tmp/
+cache/
+Cache/
+
+# .NET runtime store
+store/
+
+################################################################################
+# End of .gitignore
+################################################################################
