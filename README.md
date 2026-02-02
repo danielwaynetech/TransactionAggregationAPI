@@ -222,9 +222,7 @@ dotnet test /p:CollectCoverage=true
 ```
 
 **Test Coverage:**
-- Unit tests for all services
-- Controller tests with Moq
+- Service tests
+- Controller tests
 - Exception handling tests
-- Resilience policy tests
-- Soft delete tests
-- Audit logging tests
+- Repository tests
