@@ -2,5 +2,5 @@
   <Project Path="../TransactionAggregatorAPI.DataAccess/TransactionAggregatorAPI.DataAccess.csproj" />
   <Project Path="../TransactionAggregatorAPI.Domain/TransactionAggregatorAPI.Domain.csproj" />
   <Project Path="../TransactionAggregatorAPI.Tests/TransactionAggregatorAPI.Tests.csproj" />
-  <Project Path="TransactionAggregatorAPI.csproj" />
+  <Project Path="TransactionAggregatorAPI.API.csproj" />
 </Solution>

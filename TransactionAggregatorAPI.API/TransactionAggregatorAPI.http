@@ -1,0 +1,186 @@
+### Financial Aggregator API - Endpoint Tests
+### Base URL: http://localhost:8080/api
+### API Key: dev-key-12345 (see appsettings.json for valid keys)
+
+@baseUrl = http://localhost:8080/api
+@apiKey = dev-key-12345
+
+### =============================================================================
+### HEALTH & METRICS ENDPOINTS (No Auth Required)
+### =============================================================================
+
+### Health Check - Detailed
+GET {{baseUrl}}/health
+Accept: application/json
+
+### Health Check - Liveness Probe
+GET {{baseUrl}}/health/live
+Accept: application/json
+
+### Health Check - Readiness Probe
+GET {{baseUrl}}/health/ready
+Accept: application/json
+
+### Metrics
+GET {{baseUrl}}/health/metrics
+Accept: application/json
+
+### =============================================================================
+### TRANSACTION ENDPOINTS (Auth Required)
+### =============================================================================
+
+### Aggregate Transactions from Data Sources
+POST {{baseUrl}}/transactions/aggregate
+X-API-Key: {{apiKey}}
+Content-Type: application/json
+
+### Get Transaction by ID
+@transactionId = a1b2c3d4-e5f6-7890-abcd-ef1234567890
+GET {{baseUrl}}/transactions/{{transactionId}}
+X-API-Key: {{apiKey}}
+Accept: application/json
+
+### Get All Transactions for Customer
+@customerId = CUST001
+GET {{baseUrl}}/transactions/customer/{{customerId}}
+X-API-Key: {{apiKey}}
+Accept: application/json
+
+### Get Transactions with OData Query - Filter by Amount
+GET {{baseUrl}}/transactions/customer/{{customerId}}?$filter=amount gt 100
+X-API-Key: {{apiKey}}
+Accept: application/json
+
+### Get Transactions with OData Query - Sort by Date Descending
+GET {{baseUrl}}/transactions/customer/{{customerId}}?$orderby=transactionDate desc
+X-API-Key: {{apiKey}}
+Accept: application/json
+
+### Get Transactions with OData Query - Pagination
+GET {{baseUrl}}/transactions/customer/{{customerId}}?$top=10&$skip=0
+X-API-Key: {{apiKey}}
+Accept: application/json
+
+### Get Transactions with OData Query - Combined (Filter + Sort + Pagination)
+GET {{baseUrl}}/transactions/customer/{{customerId}}?$filter=amount gt 50&$orderby=amount desc&$top=20&$count=true
+X-API-Key: {{apiKey}}
+Accept: application/json
+
+### Get Transactions by Date Range
+@startDate = 2024-01-01T00:00:00Z
+@endDate = 2024-12-31T23:59:59Z
+GET {{baseUrl}}/transactions/customer/{{customerId}}/date-range?startDate={{startDate}}&endDate={{endDate}}
+X-API-Key: {{apiKey}}
+Accept: application/json
+
+### Get Transactions by Category
+@category = Groceries
+GET {{baseUrl}}/transactions/customer/{{customerId}}/category/{{category}}
+X-API-Key: {{apiKey}}
+Accept: application/json
+
+### Get Transaction Summary
+GET {{baseUrl}}/transactions/customer/{{customerId}}/summary?startDate={{startDate}}&endDate={{endDate}}
+X-API-Key: {{apiKey}}
+Accept: application/json
+
+### Get Customer Summary
+GET {{baseUrl}}/transactions/customer/{{customerId}}/customer-summary
+X-API-Key: {{apiKey}}
+Accept: application/json
+
+### Create Transaction
+POST {{baseUrl}}/transactions
+X-API-Key: {{apiKey}}
+Content-Type: application/json
+
+{
+  "customerId": "CUST001",
+  "accountId": "ACC001",
+  "amount": 150.50,
+  "currency": "USD",
+  "transactionDate": "2024-02-01T10:30:00Z",
+  "type": 0,
+  "category": 1,
+  "description": "Test transaction via API",
+  "merchantName": "Test Merchant",
+  "status": 1,
+  "sourceSystem": "API",
+  "reference": "TEST-REF-001"
+}
+
+### Soft Delete Transaction (Sets IsDeleted = true)
+@deleteTransactionId = a1b2c3d4-e5f6-7890-abcd-ef1234567890
+DELETE {{baseUrl}}/transactions/{{deleteTransactionId}}
+X-API-Key: {{apiKey}}
+
+### Get Audit Logs for Transaction
+@auditTransactionId = a1b2c3d4-e5f6-7890-abcd-ef1234567890
+GET {{baseUrl}}/transactions/{{auditTransactionId}}/audit
+X-API-Key: {{apiKey}}
+Accept: application/json
+
+### =============================================================================
+### ERROR SCENARIOS (Testing Exception Handling)
+### =============================================================================
+
+### Missing API Key (Should return 401)
+GET {{baseUrl}}/transactions/customer/CUST001
+Accept: application/json
+
+### Invalid API Key (Should return 401)
+GET {{baseUrl}}/transactions/customer/CUST001
+X-API-Key: invalid-key-xyz
+Accept: application/json
+
+### Invalid Customer ID (Should return 400)
+GET {{baseUrl}}/transactions/customer/
+X-API-Key: {{apiKey}}
+Accept: application/json
+
+### Invalid Date Range (Should return 400)
+GET {{baseUrl}}/transactions/customer/CUST001/date-range?startDate=2024-12-31&endDate=2024-01-01
+X-API-Key: {{apiKey}}
+Accept: application/json
+
+### Transaction Not Found (Should return 404)
+GET {{baseUrl}}/transactions/00000000-0000-0000-0000-000000000000
+X-API-Key: {{apiKey}}
+Accept: application/json
+
+### Rate Limit Test - Make 101 requests quickly (101st should return 429)
+# Run this in a loop or script to test rate limiting
+
+### =============================================================================
+### ENUMERATION VALUES
+### =============================================================================
+
+# TransactionType Enum:
+# 0 = Debit
+# 1 = Credit
+
+# TransactionCategory Enum:
+# 0 = Unknown
+# 1 = Groceries
+# 2 = Dining
+# 3 = Transportation
+# 4 = Entertainment
+# 5 = Shopping
+# 6 = Utilities
+# 7 = Healthcare
+# 8 = Education
+# 9 = Travel
+# 10 = Income
+# 11 = Transfer
+# 12 = Investment
+# 13 = Insurance
+# 14 = Housing
+# 15 = PersonalCare
+# 16 = Professional
+# 17 = Other
+
+# TransactionStatus Enum:
+# 0 = Pending
+# 1 = Completed
+# 2 = Failed
+# 3 = Cancelled
